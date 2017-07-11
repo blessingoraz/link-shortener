@@ -5,6 +5,7 @@ import Header from './Header';
 
 class App extends Component {
   state = {
+    showTable: false,
     linkText: '',
     linkUrls: []
   }
@@ -39,14 +40,37 @@ class App extends Component {
       .then((res) => res.json())
       .then((res) => {
         this.getLinkAnalytics(res.id);
-        this.setState({linkText: ''})
+        this.setState({ linkText: '', showTable: true })
       })
       .catch((err) => console.log(err, 'should get an error here'))
   }
 
   showUrl = () => {
-    if (this.state.linkUrls) {
-      console.log(this.state.linkUrls, "hello")
+    if (this.state.linkUrls.length > 0 && this.state.showTable) {
+      return (
+        <div>
+          <table>
+            <thead>
+              <tr>
+                <th>LINK</th>
+                <th>VISITS</th>
+                <th>LAST VISITED</th>
+              </tr>
+            </thead>
+            <tbody>
+              {this.state.linkUrls.map((urlObj, index) => {
+                return (
+                  <tr key={index}>
+                    <td>{urlObj.shortUrl}</td>
+                    <td>{urlObj.numberOfClicks}</td>
+                    <td>{urlObj.created}</td>
+                  </tr>
+                )
+              })}
+            </tbody>
+          </table>
+        </div>
+      )
     }
   }
 
@@ -60,10 +84,12 @@ class App extends Component {
             placeholder="link here"
             value={this.state.linkText}
             onChange={(event) => this.setState({ linkText: event.target.value })} />
-          <button 
-            onClick={this.shortenLink} 
+          <button
+            onClick={this.shortenLink}
             className={(this.state.linkText.length === 0) ? "disable" : "enable"}>Shorten this link</button>
         </div>
+
+        <p>Previously shortened by you <span className="spanText">Clear history</span></p>
 
         {this.showUrl()}
       </div>
