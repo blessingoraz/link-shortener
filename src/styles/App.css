@@ -18,11 +18,16 @@ input {
     padding-left: 10px
 }
 
+table {
+    width: 100%;
+}
+
 .enable {
     width: 25%;
     border-radius: 3px;
     border: none;
     background-color: #EB4A42;
+    outline: none;
     color: #FFF
 }
 
@@ -32,4 +37,28 @@ input {
     border: none;
     background-color: #E0E0E0;
     color: #BFBFBF
+}
+
+.tableHeader {
+    color: #AAAAAA;
+    font-family: 'Montserrat';
+    font-weight: 200;
+    font-size: 10px;
+    text-align: left;
+}
+
+.titleTextContainer {
+    margin-top: 50px
+}
+
+.titleText {
+    font-family: 'Montserrat';
+    color: #555555;
+    font-size: 16px
+}
+
+.spanText {
+    color: #EB4A42;
+    font-size: 12px;
+    margin-left: 15px
 }

@@ -7,6 +7,7 @@ class App extends Component {
   state = {
     showTable: false,
     linkText: '',
+    enabled: false,
     linkUrls: []
   }
 
@@ -16,13 +17,15 @@ class App extends Component {
       .then((res) => res.json())
       .then((res) => {
         let { analytics, id, longUrl } = res;
+        const { linkUrls } = this.state;
         let linkObj = {
           numberOfClicks: analytics.allTime.shortUrlClicks,
           created: moment().startOf('day').fromNow(),
           shortUrl: id,
           longUrl: longUrl
         }
-        this.state.linkUrls.push(linkObj);
+        const newlinkUrl = [...linkUrls, linkObj];
+        this.setState({ linkUrls: newlinkUrl });
       })
       .catch((err) => console.log(err, 'should get an error here'))
   }
@@ -40,28 +43,37 @@ class App extends Component {
       .then((res) => res.json())
       .then((res) => {
         this.getLinkAnalytics(res.id);
-        this.setState({ linkText: '', showTable: true })
+        this.setState({ linkText: '', showTable: true, enabled: false })
       })
       .catch((err) => console.log(err, 'should get an error here'))
   }
 
   showUrl = () => {
-    if (this.state.linkUrls.length > 0 && this.state.showTable) {
+    if (this.state.showTable) {
       return (
         <div>
           <table>
             <thead>
               <tr>
-                <th>LINK</th>
-                <th>VISITS</th>
-                <th>LAST VISITED</th>
+                <th className="tableHeader">LINK</th>
+                <th className="tableHeader">VISITS</th>
+                <th className="tableHeader">LAST VISITED</th>
               </tr>
             </thead>
             <tbody>
               {this.state.linkUrls.map((urlObj, index) => {
+                let string = urlObj.longUrl;
+                let trimmedLongUrl = (string.length > 48) ? `${string.substring(0, 48)}...` : string;
+
                 return (
                   <tr key={index}>
-                    <td>{urlObj.shortUrl}</td>
+                    <td>
+                      <div>
+                        <p>{urlObj.shortUrl}</p>
+                        <p>{trimmedLongUrl}
+                        </p>
+                      </div>
+                    </td>
                     <td>{urlObj.numberOfClicks}</td>
                     <td>{urlObj.created}</td>
                   </tr>
@@ -83,18 +95,21 @@ class App extends Component {
             type="text"
             placeholder="link here"
             value={this.state.linkText}
-            onChange={(event) => this.setState({ linkText: event.target.value })} />
+            onChange={(event) => this.setState({ linkText: event.target.value, enabled: true })} />
           <button
             onClick={this.shortenLink}
+            disabled={!this.state.enabled}
             className={(this.state.linkText.length === 0) ? "disable" : "enable"}>Shorten this link</button>
         </div>
 
-        <p>Previously shortened by you <span className="spanText">Clear history</span></p>
+        <div className="titleTextContainer">
+          <p className="titleText">Previously shortened by you <span className="spanText">Clear history</span></p>
+        </div>
 
         {this.showUrl()}
+
       </div>
     );
   }
 }
-
 export default App;
