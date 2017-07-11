@@ -1,0 +1,19 @@
+.headerContainer {
+    display: flex;
+    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title {
+    color: #EB4A42;
+    font-size: 35px;
+    font-family: 'Montserrat';
+    text-decoration: underline
+}
+
+.subTitle {
+    color: #CCCCCC;
+    font-family: 'Roboto';
+    font-size: 15px
+}

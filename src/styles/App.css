@@ -1,0 +1,35 @@
+.container {
+    margin-left: 300px;
+    margin-right: 300px
+}
+
+.inputContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+input {
+    width: 70%;
+    height: 30px;
+    background-color: #EAEAEA;
+    border: none;
+    outline: none;
+    color: #AAAAAA;
+    padding-left: 10px
+}
+
+.enable {
+    width: 25%;
+    border-radius: 3px;
+    border: none;
+    background-color: #EB4A42;
+    color: #FFF
+}
+
+.disable {
+    width: 25%;
+    border-radius: 3px;
+    border: none;
+    background-color: #E0E0E0;
+    color: #BFBFBF
+}
