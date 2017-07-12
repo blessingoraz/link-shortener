@@ -56,14 +56,14 @@ class App extends Component {
             <thead>
               <tr>
                 <th className="tableHeader">LINK</th>
-                <th className="tableHeader">VISITS</th>
+                <th className="tableHeader" >VISITS</th>
                 <th className="tableHeader">LAST VISITED</th>
               </tr>
             </thead>
             <tbody>
               {this.state.linkUrls.map((urlObj, index) => {
                 let longUrlString = urlObj.longUrl;
-                let trimmedLongUrl = (longUrlString.length > 48) ? `${longUrlString.substring(0, 48)}...` : longUrlString;
+                let trimmedLongUrl = (longUrlString.length > 40) ? `${longUrlString.substring(0, 48)}...` : longUrlString;
 
                 let shortUrlString = urlObj.shortUrl;
                 let trimmedShortUrl = shortUrlString.split(/l/);
@@ -106,7 +106,8 @@ class App extends Component {
         </div>
 
         <div className="titleTextContainer">
-          <p className="titleText">Previously shortened by you <span className="spanText">Clear history</span></p>
+          <p className="titleText">Previously shortened by you</p>
+          <p className="spanText" onClick={() => this.setState({linkUrls: []})}>Clear history</p>
         </div>
 
         {this.showUrl()}
