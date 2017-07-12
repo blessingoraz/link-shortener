@@ -1,13 +1,13 @@
 .headerContainer {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    justify-content: space-between;
     align-items: center;
 }
 
 .title {
     color: #EB4A42;
-    font-size: 35px;
+    font-size: 180%;
     font-family: 'Montserrat';
     text-decoration: underline
 }
@@ -16,5 +16,7 @@
     color: #CCCCCC;
     font-family: 'Montserrat';
     font-weight: 200;
-    font-size: 12px
+    font-size: 0.75em
 }
+
+/*display: flex;*/

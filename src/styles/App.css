@@ -1,6 +1,6 @@
 .container {
-    margin-left: 300px;
-    margin-right: 300px
+    width: 70%;
+    margin: 0 auto;
 }
 
 .inputContainer {
@@ -43,7 +43,7 @@ table {
     color: #AAAAAA;
     font-family: 'Montserrat';
     font-weight: 200;
-    font-size: 10px;
+    font-size: 0.625em;
     text-align: left;
 }
 
@@ -54,11 +54,23 @@ table {
 .titleText {
     font-family: 'Montserrat';
     color: #555555;
-    font-size: 16px
+    font-size: 100%;
 }
 
 .spanText {
     color: #EB4A42;
-    font-size: 12px;
+    font-size: 0.750em;
     margin-left: 15px
+}
+
+.primaryText {
+    font-family: 'Montserrat';
+    color: #555555;
+    font-size: 0.875em;
+}
+
+.secondaryText {
+    font-family: 'Montserrat';
+    font-size: 0.875em;
+    color: #AAAAAA;
 }

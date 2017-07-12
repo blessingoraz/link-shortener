@@ -62,20 +62,23 @@ class App extends Component {
             </thead>
             <tbody>
               {this.state.linkUrls.map((urlObj, index) => {
-                let string = urlObj.longUrl;
-                let trimmedLongUrl = (string.length > 48) ? `${string.substring(0, 48)}...` : string;
+                let longUrlString = urlObj.longUrl;
+                let trimmedLongUrl = (longUrlString.length > 48) ? `${longUrlString.substring(0, 48)}...` : longUrlString;
+
+                let shortUrlString = urlObj.shortUrl;
+                let trimmedShortUrl = shortUrlString.split(/l/);
+                console.log(trimmedShortUrl[1], "errrrr")
 
                 return (
                   <tr key={index}>
                     <td>
                       <div>
-                        <p>{urlObj.shortUrl}</p>
-                        <p>{trimmedLongUrl}
-                        </p>
+                        <p className="primaryText">{urlObj.shortUrl}</p>
+                        <p className="secondaryText">{trimmedLongUrl}</p>
                       </div>
                     </td>
-                    <td>{urlObj.numberOfClicks}</td>
-                    <td>{urlObj.created}</td>
+                    <td className="primaryText">{urlObj.numberOfClicks}</td>
+                    <td className="primaryText">{urlObj.created}</td>
                   </tr>
                 )
               })}
