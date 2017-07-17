@@ -40,9 +40,12 @@ input {
     color: #BFBFBF;
     margin-top: 5px;
 }
+.tableContainer {
+    overflow-x: auto;
+}
 
 table {
-    width: 70%;
+    width: 100%;
 }
 
 .tableHeader {
@@ -71,14 +74,35 @@ table {
     font-family: 'Montserrat';
 }
 
+.spanText:hover {
+    cursor: pointer
+}
+
 .primaryText {
     font-family: 'Montserrat';
     color: #555555;
     font-size: 0.75em;
 }
 
+.primaryText:hover {
+    cursor: pointer;
+}
+
 .secondaryText {
     font-family: 'Montserrat';
     font-size: 0.75em;
     color: #AAAAAA;
+}
+
+.copyTextContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.copyUrlText {
+    margin-left: 5px;
+    color: #EB4A42;
+    font-size: 0.75em;
+    font-family: 'Montserrat';
 }

@@ -5,8 +5,8 @@ import Header from './Header';
 
 class App extends Component {
   state = {
-    showTable: false,
     linkText: '',
+    showTable: false,
     enabled: false,
     linkUrls: []
   }
@@ -48,10 +48,18 @@ class App extends Component {
       .catch((err) => console.log(err, 'should get an error here'))
   }
 
+  showCopyUrlText = (id) => {
+    if(this.state.showIndex === id) {
+      return (
+        <p className="copyUrlText">click to copy url</p>
+      )
+    }
+  }
+
   showUrl = () => {
     if (this.state.showTable) {
       return (
-        <div>
+        <div className="tableContainer">
           <table>
             <thead>
               <tr>
@@ -65,15 +73,17 @@ class App extends Component {
                 let longUrlString = urlObj.longUrl;
                 let trimmedLongUrl = (longUrlString.length > 40) ? `${longUrlString.substring(0, 48)}...` : longUrlString;
 
-                let shortUrlString = urlObj.shortUrl;
-                let trimmedShortUrl = shortUrlString.split(/l/);
-                console.log(trimmedShortUrl[1], "errrrr")
-
                 return (
-                  <tr key={index}>
+                  <tr 
+                    key={index}
+                    onMouseEnter={() => this.setState({ showIndex: index })}
+                    onMouseLeave={() => this.setState({ showIndex: ''})}>
                     <td>
                       <div>
-                        <p className="primaryText">{urlObj.shortUrl}</p>
+                        <div className="copyTextContainer">
+                          <p className="primaryText">{urlObj.shortUrl}</p>
+                          {this.showCopyUrlText(index)}
+                        </div>
                         <p className="secondaryText">{trimmedLongUrl}</p>
                       </div>
                     </td>
@@ -96,18 +106,18 @@ class App extends Component {
         <div className="inputContainer">
           <input
             type="text"
-            placeholder="link here"
             value={this.state.linkText}
-            onChange={(event) => this.setState({ linkText: event.target.value, enabled: true })} />
+            placeholder="link here"
+            onChange={(event) => this.setState({linkText: event.target.value, enabled: true })} />
           <button
             onClick={this.shortenLink}
             disabled={!this.state.enabled}
-            className={(this.state.linkText.length === 0) ? "disable" : "enable"}>Shorten this link</button>
+            className={(this.state.urlText === 0) ? "disable" : "enable"}>Shorten this link</button>
         </div>
 
         <div className="titleTextContainer">
           <p className="titleText">Previously shortened by you</p>
-          <p className="spanText" onClick={() => this.setState({linkUrls: []})}>Clear history</p>
+          <p className="spanText" onClick={() => this.setState({ linkUrls: [], showTable: false })}>Clear history</p>
         </div>
 
         {this.showUrl()}
