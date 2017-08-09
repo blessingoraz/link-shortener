@@ -7,14 +7,19 @@
   },
   "dependencies": {
     "dotenv": "^4.0.0",
+    "gh-pages": "^1.0.0",
     "moment": "^2.18.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  }
+  },
+  "homepage": "https://andela-borazulume.github.io/link-shortener"
+  
 }

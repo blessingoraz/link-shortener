@@ -6,7 +6,6 @@
 .inputContainer {
     display: flex;
     flex-direction: column;
-    /*justify-content: space-between;*/
 }
 
 input {
@@ -20,25 +19,23 @@ input {
     /*padding-left: 10px*/
 }
 
-.enable {
+button {
     width: 100%;
     border-radius: 3px;
     height: 30px;
     border: none;
-    background-color: #EB4A42;
-    outline: none;
-    color: #FFF;
     margin-top: 5px;
 }
 
+.enable {
+    background-color: #EB4A42;
+    outline: none;
+    color: #FFF;
+}
+
 .disable {
-    width: 100%;
-    border-radius: 3px;
-    height: 30px;
-    border: none;
     background-color: #E0E0E0;
     color: #BFBFBF;
-    margin-top: 5px;
 }
 
 table {
@@ -81,4 +78,42 @@ table {
     font-family: 'Montserrat';
     font-size: 0.75em;
     color: #AAAAAA;
+}
+
+.copyTextContainer {
+    display: flex;
+    align-items: center;
+}
+
+.copyUrlText {
+    color: #EB4A42;
+    margin-left: 10px;
+}
+
+@media only screen and (min-width: 555px) {
+    .inputContainer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    input {
+        flex: 0.75;
+    }
+    button {
+        flex: 0.2;
+        margin: 0;
+    }
+    table {
+        width: 100%;
+    }
+    .titleTextContainer {
+        display: flex;
+    }
+    .titleText {
+        font-size: 90%;
+    }
+    .spanText {
+        font-size: 0.750em;
+        margin: 1.25em;
+    }
 }

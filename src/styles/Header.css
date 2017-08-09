@@ -15,8 +15,39 @@
 .subTitle {
     color: #CCCCCC;
     font-family: 'Montserrat';
-    font-weight: 200;
-    font-size: 70%;
+    font-size: 0.7em;
 }
 
-/*display: flex;*/
+@media only screen and (min-width: 425px) {
+    .headerContainer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between
+    }
+
+    .title {
+        font-size: 100%;
+    }
+    
+    .subTitle {
+         font-size: 20%; 
+    }
+}
+
+@media only screen and (min-width: 555px) {
+    .title {
+        font-size: 120%;
+    }
+}
+
+
+@media only screen and (min-width: 555px) {
+     .title {
+        font-size: 1.5em;
+    }
+    
+    .subTitle {
+         font-size: 0.73em; 
+    }
+}
+
