@@ -7,7 +7,7 @@
 
 .title {
     color: #EB4A42;
-    font-size: 180%;
+    font-size: 1.8em;
     font-family: 'Montserrat';
     text-decoration: underline
 }
@@ -26,20 +26,13 @@
     }
 
     .title {
-        font-size: 100%;
+        font-size: 1em;
     }
     
     .subTitle {
-         font-size: 20%; 
+         font-size: 0.2em; 
     }
 }
-
-@media only screen and (min-width: 555px) {
-    .title {
-        font-size: 120%;
-    }
-}
-
 
 @media only screen and (min-width: 555px) {
      .title {

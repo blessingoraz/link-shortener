@@ -57,7 +57,7 @@ table {
 .titleText {
     font-family: 'Montserrat';
     color: #555555;
-    font-size: 70%;
+    font-size: 0.7em;
     text-align: center;
 }
 
@@ -110,7 +110,7 @@ table {
         display: flex;
     }
     .titleText {
-        font-size: 90%;
+        font-size: 0.9em;
     }
     .spanText {
         font-size: 0.750em;
